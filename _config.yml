@@ -1,103 +1,74 @@
-# REMEMBER TO GO THROUGH THIS FILE, PERSONALISING THE SETTINGS
+title: Oinam Jekyll
+description: A simple, clean, and minimal Jekyll Theme.
 
-title: Your Title
-author:
-  name: Your Name
-  github: username
-  twitter: username
+# Set this to your domain; baseurl is for the folder in your domain, if you have one -- `blog`.
+# you can leave both of them blank if you are deploying on a top-level domain.
+url: https://oinam.github.io
+baseurl: /oinam-jekyll
 
-# If you don't have a favicon, change to false.
-favicon: false
-
+# footer
 footer:
-  separator: '|'
-  content: Ⓒ Your Name Here
-  # Append current year on build
-  year: true
+  credit: true
+  custom: false
 
-baseurl: "" # Use if your site will be located in a subdirectory, e.g. /blog.
-url: "https://guntech8829.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+# if above footer:custom is 'true', then this will be printed instead
+footer_custom: 'An ever Work-in-Progress effort by <a href="https://oinam.com">Oinam</a>.'
 
-description: Your site description.
+layout:
+  theme: default # default, vintage, nord
+  theme_highlighter: vs # default, more at css/highlighter (source: https://github.com/richleland/pygments-css)
+  theme_switch: true # enable or disable user toggle switch between light and dark theme
+  home_posts_no: 6
+  home_postheader_title: 'Recent posts'
+  home_postmeta_title: 'View all'
+  posts_home: /blog/
+  link_new_tab: true # should external links open in a new tab (true) or in the current tab (false)
 
-# Build settings
+# styles
+# include only the styles you want [true | false]
+styles:
+  font_family: sans # serif, sans (default)
+  forms: true
+  syntax_highlighter: true # Code Syntax Highlighter
+
 markdown: kramdown
-theme: fundamental
-
-
-# Enable theme compononents
-enabled:
-  breadcrumbs: true
-  tags: true
-  comments: false
-  # Enable RSS menu item
-  rss: false
-  seo: true
-  # Share buttons are only on desktop (user use the share menu on mobile).
-  social:
-    enabled: true
-    twitter: true
-    facebook: true
-    messenger: false
-    whatsapp: false
-
-# Get your disquas shortname from the disqus admin panel for your blog.
-disqus_shortname: your-forum-shortname
-# Define the colors for social buttons.
-socialBtnsColor: '#4845DF'
-
-bio:
-  enabled: true
-  animate: true
-  heading: Your Bio Heading
-  subheading: 'Your subheading'
-  img_url: false # 'your-img-url'
-  body: >
-    Your Bio Description Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam.
-#Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-archives
-  - jekyll-seo-tag
-  - jekyll-paginate
-
-# Compress Sass for production.
-sass:
-  style: compressed
-
-# Specifying front matter defaults
-defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-      type: posts
-    values:
-      layout: "post"
-      author: "YOUR NAME"
-      comments: true
-
+highlighter: rouge
 
 permalink: pretty
+permalink: /:title/
 
-#######
-#PLUGIN CONFIG
-#######
+sass:
+  style: compressed # nested, compact, expanded or compressed
+  sourcemap: never
 
-# Archives
-jekyll-archives:
-  enabled:
-  - year
-  - month
-  - tags
-  layout: 'archive'
-  layouts:
-    tag: 'tag_page'
-    month: month
-  permalinks:
-    year: '/:year/'
-    month: '/:year/:month/'
-    day: '/:year/:month/:day/'
-    tag: '/tag/:name/'
-    category: '/category/:name/'
+plugins:
+ - jekyll-optional-front-matter # https://github.com/benbalter/jekyll-optional-front-matter
+ - jekyll-titles-from-headings # https://github.com/benbalter/jekyll-titles-from-headings/
 
-paginate: 20
+defaults:
+  - scope:
+      path: '_posts'
+      type: 'posts'
+    values:
+      layout: 'post'
+      permalink: '/:year/:title/'
+
+titles_from_headings:
+  enabled: true
+  strip_title: true
+  collections: true
+
+exclude:
+  - .jekyll-cache/
+  - .sass-cache/
+  - Gemfile
+  - Gemfile.lock
+  - gemfiles/
+  - LICENSE
+  - netlify.toml
+  - node_modules/
+  - oinam-jekyll-*.*
+  - oinam-jekyll.gemspec
+  - README.*
+  - server
+  - vendor/
